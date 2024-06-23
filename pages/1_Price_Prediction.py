@@ -81,3 +81,7 @@ if st.button('Predict'):
         st.text("The price of the flat is between {} Lac and {} Lac".format(round(low, 2), round(high, 2)))
     elif low > 100:
         st.text("The price of the flat is between {} Cr and {} Cr".format(round(low/100, 2), round(high/100, 2))) 
+
+    one_df['price'] = base_price
+
+    one_df.to_csv('datasets/recommend_df.csv',index=False)
