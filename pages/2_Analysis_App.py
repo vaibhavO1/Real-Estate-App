@@ -23,6 +23,9 @@ filtered_df = new_df[new_df['city'] == selected_city][['location','price_in_lakh
 
 # Group by location and calculate mean values
 group_df = filtered_df.groupby('location').mean()[['price_in_lakh', 'price_per_sqft', 'area_in_sqft', 'latitude', 'longitude']]
+group_df['area_in_sqft'] = round(group_df['area_in_sqft'],2)
+group_df['price_per_sqft'] = round(group_df['price_per_sqft'],2)
+
 
 st.header(f'Location wise Price per Sqft Geomap for {selected_city}')
 fig = px.scatter_mapbox(group_df, lat="latitude", lon="longitude", color="price_per_sqft", size='area_in_sqft',
